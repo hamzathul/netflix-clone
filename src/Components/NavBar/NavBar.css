@@ -1,4 +1,4 @@
-.navbar{
+.navbar {
     position: fixed;
     top: 0;
     width: 100%;
@@ -6,19 +6,18 @@
     padding: 20px;
     display: flex;
     justify-content: space-between;
-    background-color: rgba(17, 17, 17, 0.1);
-}
-
-.logo{
+    transition: background-color 0.3s ease; /* Smooth transition */
+  }
+  
+  .logo {
     position: fixed;
     left: 20px;
     width: 80px;
-
-}
-
-.avatar{
+  }
+  
+  .avatar {
     position: fixed;
     right: 20px;
     width: 30px;
-
-}
+  }
+  
