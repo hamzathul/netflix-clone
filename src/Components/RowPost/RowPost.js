@@ -1,12 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './RowPost.css';
 import axios from '../../axios';
-import { imageUrl, API_KEY } from '../../Constants/Constants';
-import YouTube from 'react-youtube';
+import { API_KEY, imageUrl } from '../../Constants/Constants';
 
 function RowPost(props) {
   const [movies, setMovies] = useState([]);
-  const [urlId, setUrlId] = useState('');
   const postersRef = useRef(null); // Use a reference for the posters container
 
   useEffect(() => {
@@ -16,21 +14,15 @@ function RowPost(props) {
     });
   }, [props.url]); // Added dependency array to prevent infinite requests
 
-  const opts = {
-    height: '390',
-    width: '100%',
-    playerVars: {
-      autoplay: 0,
-    },
-  };
-
   const handleMovie = (id) => {
-    console.log(id);
+    // Fetch the video details and open the video in a new tab
     axios.get(`/movie/${id}/videos?api_key=${API_KEY}&language=en-US`).then((response) => {
       if (response.data.results.length !== 0) {
-        setUrlId(response.data.results[0]);
+        const videoKey = response.data.results[0].key;
+        const youtubeUrl = `https://www.youtube.com/watch?v=${videoKey}`;
+        window.open(youtubeUrl, '_blank'); // Open YouTube video in a new tab
       } else {
-        console.log('Array empty');
+        console.log('No video available');
       }
     });
   };
@@ -80,8 +72,6 @@ function RowPost(props) {
       <div className="arrow right" onClick={() => scrollRow('right')}>
         {/* Empty as it's handled in CSS */}
       </div>
-
-      {urlId && <YouTube videoId={urlId.key} opts={opts} />}
     </div>
   );
 }
