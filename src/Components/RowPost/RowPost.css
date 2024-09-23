@@ -1,28 +1,86 @@
-.row{
+.row {
     margin-left: 20px;
     color: #fff;
 }
-.posters{
+
+.posters {
     display: flex;
     padding: 20px;
     overflow-x: scroll;
     overflow-y: hidden;
 }
 
-.posters::-webkit-scrollbar{
+.posters::-webkit-scrollbar {
     display: none;
 }
 
-.poster{
+.poster,
+.smallPoster {
+    cursor: pointer;
+    transition: transform 0.2s;
+    position: relative;
+}
+
+.poster {
     max-height: 250px;
     margin-right: 10px;
-    cursor: pointer;
 }
-.smallPoster{
-    max-height:150px;
+
+.smallPoster {
+    max-height: 150px;
     margin-right: 10px;
-    cursor: pointer;
 }
-.poster:hover{
+
+.poster:hover,
+.smallPoster:hover {
     transform: scale(1.1);
+}
+
+/* Container for poster and overlay */
+.poster-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* Overlay to appear on hover */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Darker overlay like in banner */
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+
+/* Show overlay on hover */
+.poster-container:hover .overlay {
+    opacity: 1;
+}
+
+/* Reuse banner button styles */
+.button {
+    cursor: pointer;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-weight: 700;
+    border-radius: 0.2vw;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background-color: rgba(51, 51, 51, 0.5); /* Same as banner button */
+}
+
+.button:hover {
+    color: black;
+    background-color: #e6e6e6; /* Same hover effect as banner */
+    transition: all 0.2s;
 }
