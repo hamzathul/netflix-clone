@@ -1,4 +1,5 @@
 .row {
+    position: relative; /* To position the arrows */
     margin-left: 20px;
     color: #fff;
 }
@@ -8,10 +9,61 @@
     padding: 20px;
     overflow-x: scroll;
     overflow-y: hidden;
+    scroll-behavior: smooth;
 }
 
 .posters::-webkit-scrollbar {
     display: none;
+}
+
+/* Full-height gradient arrow buttons */
+.arrow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50px; /* Fixed width for the arrow */
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    transition: opacity 0.2s ease;
+    opacity: 0.8;
+}
+
+.arrow:hover {
+    opacity: 1; /* Full opacity on hover */
+}
+
+/* Left arrow with gradient background */
+.arrow.left {
+    left: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent); /* Gradient from black to transparent */
+}
+
+/* Right arrow with gradient background */
+.arrow.right {
+    right: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.8), transparent); /* Gradient from black to transparent */
+}
+
+/* Arrow symbols */
+.arrow::before {
+    content: '';
+    border: solid white;
+    border-width: 0 5px 5px 0;
+    padding: 10px;
+    transform: rotate(45deg);
+    display: block;
+}
+
+.arrow.left::before {
+    transform: rotate(135deg); /* Rotate for left arrow */
+}
+
+.arrow.right::before {
+    transform: rotate(-45deg); /* Rotate for right arrow */
 }
 
 .poster,
@@ -49,7 +101,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Darker overlay like in banner */
+    background: rgba(0, 0, 0, 0.5); /* Darker overlay */
     opacity: 0;
     display: flex;
     flex-direction: column;
@@ -58,7 +110,6 @@
     transition: opacity 0.3s ease;
 }
 
-/* Show overlay on hover */
 .poster-container:hover .overlay {
     opacity: 1;
 }

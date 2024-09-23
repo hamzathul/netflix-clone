@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './RowPost.css';
 import axios from '../../axios';
 import { imageUrl, API_KEY } from '../../Constants/Constants';
@@ -7,6 +7,7 @@ import YouTube from 'react-youtube';
 function RowPost(props) {
   const [movies, setMovies] = useState([]);
   const [urlId, setUrlId] = useState('');
+  const postersRef = useRef(null); // Use a reference for the posters container
 
   useEffect(() => {
     axios.get(props.url).then((response) => {
@@ -36,13 +37,25 @@ function RowPost(props) {
 
   const handleAddToWatchlist = (movie) => {
     console.log("Added to Watchlist:", movie);
-    // You can implement logic to add the movie to the user's watchlist here
+  };
+
+  // Scroll handler function
+  const scrollRow = (direction) => {
+    const scrollAmount = direction === 'left' ? -300 : 300;
+    postersRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   };
 
   return (
     <div className="row">
       <h2>{props.title}</h2>
-      <div className="posters">
+
+      {/* Left arrow */}
+      <div className="arrow left" onClick={() => scrollRow('left')}>
+        {/* Empty as it's handled in CSS */}
+      </div>
+
+      {/* Posters row */}
+      <div className="posters" ref={postersRef}>
         {movies.map((obj) => (
           <div className="poster-container" key={obj.id}>
             <img
@@ -62,6 +75,12 @@ function RowPost(props) {
           </div>
         ))}
       </div>
+
+      {/* Right arrow */}
+      <div className="arrow right" onClick={() => scrollRow('right')}>
+        {/* Empty as it's handled in CSS */}
+      </div>
+
       {urlId && <YouTube videoId={urlId.key} opts={opts} />}
     </div>
   );
