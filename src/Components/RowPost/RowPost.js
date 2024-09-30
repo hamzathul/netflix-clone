@@ -27,9 +27,6 @@ function RowPost(props) {
     });
   };
 
-  const handleAddToWatchlist = (movie) => {
-    console.log("Added to Watchlist:", movie);
-  };
 
   // Scroll handler function
   const scrollRow = (direction) => {
@@ -57,10 +54,10 @@ function RowPost(props) {
               alt="poster"
             />
             <div className="overlay">
-              <button className="button" onClick={() => handleMovie(obj.id)}>
+              <button className="button-rowpost" onClick={() => handleMovie(obj.id)}>
                 Play
               </button>
-              <button className="button" onClick={() => handleAddToWatchlist(obj)}>
+              <button className="button">
                 Add to Watchlist
               </button>
             </div>

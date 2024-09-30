@@ -19,6 +19,7 @@ function Banner() {
           const randomIndex = Math.floor(Math.random() * movies.length);
           const selectedMovie = movies[randomIndex];
           setMovie(selectedMovie);
+          // console.log(selectedMovie)
         }
       } catch (error) {
         console.error("Error fetching movies:", error);

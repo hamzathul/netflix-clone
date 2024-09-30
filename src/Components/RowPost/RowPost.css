@@ -1,6 +1,7 @@
 .row {
     position: relative; /* To position the arrows */
-    margin-left: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
     color: #fff;
 }
 
@@ -29,6 +30,8 @@
     user-select: none;
     transition: opacity 0.2s ease;
     opacity: 0.8;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .arrow:hover {
@@ -37,12 +40,12 @@
 
 .arrow.left {
     left: 0;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
+    /* background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent); */
 }
 
 .arrow.right {
     right: 0;
-    background: linear-gradient(to left, rgba(0, 0, 0, 0.8), transparent);
+    /* background: linear-gradient(to left, rgba(0, 0, 0, 0.8), transparent); */
 }
 
 .arrow::before {
@@ -127,6 +130,29 @@
     background-color: #e6e6e6;
     transition: all 0.2s;
 }
+
+.button-rowpost {
+    cursor: pointer;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-weight: 700;
+    border-radius: 0.2vw;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-right: 1rem;
+    margin-bottom: 5px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background-color: rgba(51, 51, 51, 0.5);
+}
+
+.button-rowpost:hover {
+    color: black;
+    background-color: #e6e6e6;
+    transition: all 0.2s;
+}
+
 
 /* Responsive styles */
 @media (max-width: 768px) {
