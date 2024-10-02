@@ -17,6 +17,10 @@
 </div>
 <br/>
 
+## Screenshot
+
+![App Screenshot](https://github.com/user-attachments/assets/04080ffb-11cc-4ee8-a538-6e6820369b12)
+
 ## Run Locally
 
 Clone the project
